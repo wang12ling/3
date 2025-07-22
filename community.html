@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩家社区 - 我的世界服务器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#22c55e',
+                        secondary: '#165DFF',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .community-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .community-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(34, 197, 94, 0.2), 0 10px 10px -5px rgba(34, 197, 94, 0.1);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark text-light font-inter antialiased">
+    <!-- 导航栏 -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-dark/95">
+        <div class="bg-dark/80 bg-blur py-4 px-6 md:px-12">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="游戏官网.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                        <i class="fa fa-cubes text-xl text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">我的世界服务器</span>
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="游戏官网.html#home" class="text-white hover:text-primary transition-colors duration-300">首页</a>
+                    <a href="游戏官网.html#servers" class="text-white hover:text-primary transition-colors duration-300">服务器</a>
+                    <a href="游戏官网.html#about" class="text-white hover:text-primary transition-colors duration-300">关于我们</a>
+                    <a href="游戏官网.html#contact" class="text-white hover:text-primary transition-colors duration-300">联系我们</a>
+                </nav>
+                <button class="md:hidden text-white text-2xl" id="menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-dark/95 bg-blur" id="mobile-menu">
+            <div class="px-6 py-4 space-y-4">
+                <a href="游戏官网.html#home" class="block text-white hover:text-primary transition-colors duration-300">首页</a>
+                <a href="游戏官网.html#servers" class="block text-white hover:text-primary transition-colors duration-300">服务器</a>
+                <a href="游戏官网.html#about" class="block text-white hover:text-primary transition-colors duration-300">关于我们</a>
+                <a href="游戏官网.html#contact" class="block text-white hover:text-primary transition-colors duration-300">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 社区页面内容 -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white mb-6">玩家社区</h1>
+                <p class="text-white/70 max-w-2xl mx-auto text-lg">探索社区资源，分享你的创意，解决游戏问题</p>
+            </div>
+
+            <!-- 社区板块 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- 光影板块 -->
+                <div class="bg-dark/50 border border-gray-700 rounded-xl overflow-hidden community-card">
+                    <div class="h-48 relative">
+                        <img src="https://picsum.photos/id/111/600/400" alt="光影效果展示" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full">光影</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">光影效果分享</h3>
+                        <p class="text-white/70 mb-4">探索各种精美的光影效果，提升你的游戏视觉体验。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50 text-sm"><i class="fa fa-download mr-1"></i> 24个资源</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors duration-300 view-section" data-section="shaders">
+                                查看 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 材质包板块 -->
+                <div class="bg-dark/50 border border-gray-700 rounded-xl overflow-hidden community-card">
+                    <div class="h-48 relative">
+                        <img src="https://picsum.photos/id/112/600/400" alt="材质包展示" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full">材质包</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">材质包资源</h3>
+                        <p class="text-white/70 mb-4">各种风格的材质包，让你的世界焕然一新。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50 text-sm"><i class="fa fa-download mr-1"></i> 36个资源</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors duration-300 view-section" data-section="textures">
+                                查看 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务器板块 -->
+                <div class="bg-dark/50 border border-gray-700 rounded-xl overflow-hidden community-card">
+                    <div class="h-48 relative">
+                        <img src="https://picsum.photos/id/113/600/400" alt="服务器展示" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full">服务器</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">服务器资讯</h3>
+                        <p class="text-white/70 mb-4">服务器更新日志、活动公告和未来规划。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50 text-sm"><i class="fa fa-newspaper-o mr-1"></i> 12篇文章</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors duration-300 view-section" data-section="server">
+                                查看 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 世界板块 -->
+                <div class="bg-dark/50 border border-gray-700 rounded-xl overflow-hidden community-card">
+                    <div class="h-48 relative">
+                        <img src="https://picsum.photos/id/114/600/400" alt="世界展示" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full">世界</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">精彩世界分享</h3>
+                        <p class="text-white/70 mb-4">玩家们的创意世界展示，一起来欣赏大神作品。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50 text-sm"><i class="fa fa-image mr-1"></i> 18个世界</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors duration-300 view-section" data-section="worlds">
+                                查看 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 解疑板块 -->
+                <div class="bg-dark/50 border border-gray-700 rounded-xl overflow-hidden community-card md:col-span-2 lg:col-span-1">
+                    <div class="h-48 relative">
+                        <img src="https://picsum.photos/id/115/600/400" alt="解疑答惑" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full">解疑</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">常见问题解答</h3>
+                        <p class="text-white/70 mb-4">新手引导、技术支持和常见问题的解决方案。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50 text-sm"><i class="fa fa-question-circle mr-1"></i> 42个问题</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors duration-300 view-section" data-section="faq">
+                                查看 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 板块内容展示区 -->
+            <div id="section-content" class="bg-dark/50 border border-gray-700 rounded-xl p-8 min-h-[400px]">
+                <div class="text-center py-12">
+                    <i class="fa fa-users text-6xl text-primary/50 mb-6"></i>
+                    <h2 class="text-2xl font-bold text-white mb-4">欢迎来到玩家社区</h2>
+                    <p class="text-white/70 max-w-2xl mx-auto">
+                        请从上方选择一个板块进行浏览，这里有丰富的资源和信息等待你发现。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="游戏官网.html" class="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-300">
+                    <i class="fa fa-arrow-left mr-2"></i> 返回首页
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 mt-6 pt-8 text-center">
+                <p class="text-white/50">&copy; 2025/7/21 All Right Reserved by wang12ling.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // 社区板块内容切换
+        const sectionButtons = document.querySelectorAll('.view-section');
+        const contentArea = document.getElementById('section-content');
+
+        // 各个板块的内容
+        const sectionContents = {
+            shaders: `
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fa fa-sun-o text-primary mr-3"></i> 光影效果分享
+                    </h2>
+                    <p class="text-white/70 mb-8">这里是玩家们分享的各种光影效果资源，能够显著提升游戏的视觉体验。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">SEUS PTGI E12</h3>
+                            <p class="text-white/60 text-sm mb-3">高质量光影，支持光线追踪效果，适合高配电脑。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 124次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                        
+                        </div>
+                        
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">BSL Shaders v8.1.01</h3>
+                            <p class="text-white/60 text-sm mb-3">平衡性能与画质的光影，适合中等配置电脑。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 98次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">Chocapic13 V9 Ultra</h3>
+                            <p class="text-white/60 text-sm mb-3">极致画面表现，光影效果丰富，需要较高配置。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 76次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">Sildur's Vibrant Shaders</h3>
+                            <p class="text-white/60 text-sm mb-3">色彩鲜艳，性能友好，适合各种配置电脑。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 112次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            textures: `
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fa fa-th text-primary mr-3"></i> 材质包资源
+                    </h2>
+                    <p class="text-white/70 mb-8">各种风格的材质包，让你的我的世界拥有独特的视觉风格。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">Faithful 32x</h3>
+                            <p class="text-white/60 text-sm mb-3">保留原版风格的高清材质，32x分辨率。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 204次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">Sphax PureBDCraft</h3>
+                            <p class="text-white/60 text-sm mb-3">卡通风格材质包，非常受欢迎的材质之一。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 156次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">Dokucraft</h3>
+                            <p class="text-white/60 text-sm mb-3">中世纪风格材质，细节丰富，氛围浓厚。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 89次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 p-4 rounded-lg border border-gray-700">
+                            <h3 class="text-white font-semibold mb-2">Modern HD</h3>
+                            <p class="text-white/60 text-sm mb-3">现代风格材质，适合建造现代建筑。</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary text-sm"><i class="fa fa-download mr-1"></i> 124次下载</span>
+                                <button class="text-white/70 hover:text-white text-sm">下载 <i class="fa fa-arrow-down ml-1"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            server: `
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fa fa-server text-primary mr-3"></i> 服务器资讯
+                    </h2>
+                    <p class="text-white/70 mb-8">服务器的最新动态、更新日志和活动公告。</p>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-dark/70 p-6 rounded-lg border border-gray-700">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-white font-semibold text-lg">服务器2.0版本更新公告</h3>
+                                <span class="text-white/50 text-sm">2025-07-15</span>
+                            </div>
+                            <p class="text-white/60 mb-4">本次更新将带来全新的生物群系和任务系统，同时优化了服务器性能，减少卡顿现象。</p>
+                            <ul class="text-white/60 text-sm mb-4 space-y-2 ml-5 list-disc">
+                                <li>新增3种生物群系</li>
+                                <li>添加任务系统和奖励机制</li>
+                                <li>优化服务器负载均衡</li>
+                                <li>修复已知bug</li>
+                            </ul>
+                            <button class="text-primary hover:text-primary/80 text-sm">查看详情 <i class="fa fa-angle-right ml-1"></i></button>
+                        </div>
+                        
+                        <div class="bg-dark/70 p-6 rounded-lg border border-gray-700">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-white font-semibold text-lg">首届建筑大赛活动通知</h3>
+                                <span class="text-white/50 text-sm">2025-07-10</span>
+                            </div>
+                            <p class="text-white/60 mb-4">我们将举办首届建筑大赛，主题为"未来城市"，优胜者将获得丰厚奖励和专属称号。</p>
+                            <ul class="text-white/60 text-sm mb-4 space-y-2 ml-5 list-disc">
+                                <li>报名时间：7月15日-7月20日</li>
+                                <li>比赛时间：7月21日-8月5日</li>
+                                <li>评选时间：8月6日-8月10日</li>
+                                <li>一等奖将获得300元游戏点卡</li>
+                            </ul>
+                            <button class="text-primary hover:text-primary/80 text-sm">查看详情 <i class="fa fa-angle-right ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `,
+            worlds: `
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fa fa-globe text-primary mr-3"></i> 精彩世界分享
+                    </h2>
+                    <p class="text-white/70 mb-8">玩家们创建的精彩世界展示，欢迎大家借鉴学习。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-dark/70 rounded-lg border border-gray-700 overflow-hidden">
+                            <img src="https://picsum.photos/id/237/600/300" alt="幻想城堡" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-white font-semibold mb-2">幻想城堡</h3>
+                                <p class="text-white/60 text-sm mb-3">由玩家"建筑大师"花费3个月建造的巨型城堡，细节丰富。</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-white/50 text-sm"><i class="fa fa-eye mr-1"></i> 328次浏览</span>
+                                    <button class="text-primary hover:text-primary/80 text-sm">下载地图 <i class="fa fa-download ml-1"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 rounded-lg border border-gray-700 overflow-hidden">
+                            <img src="https://picsum.photos/id/238/600/300" alt="现代都市" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-white font-semibold mb-2">现代都市</h3>
+                                <p class="text-white/60 text-sm mb-3">多人合作建造的现代城市，包含各种地标建筑和基础设施。</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-white/50 text-sm"><i class="fa fa-eye mr-1"></i> 456次浏览</span>
+                                    <button class="text-primary hover:text-primary/80 text-sm">下载地图 <i class="fa fa-download ml-1"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            faq: `
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fa fa-question-circle text-primary mr-3"></i> 常见问题解答
+                    </h2>
+                    <p class="text-white/70 mb-8">新手引导和常见问题的解决方案，如有其他问题请联系管理员。</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-dark/70 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none">
+                                <span class="text-white font-medium">如何加入服务器？</span>
+                                <i class="fa fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden p-4 pt-0 text-white/70 border-t border-gray-700">
+                                <p>1. 确保你的游戏版本与服务器版本一致</p>
+                                <p>2. 在游戏中点击"多人游戏"，然后点击"添加服务器"</p>
+                                <p>3. 输入服务器地址和名称，点击"完成"</p>
+                                <p>4. 选择服务器，点击"加入服务器"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none">
+                                <span class="text-white font-medium">忘记密码怎么办？</span>
+                                <i class="fa fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden p-4 pt-0 text-white/70 border-t border-gray-700">
+                                <p>请联系官方QQ群的管理员，提供你的游戏ID和注册信息，管理员会帮你重置密码。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none">
+                                <span class="text-white font-medium">服务器卡顿怎么办？</span>
+                                <i class="fa fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden p-4 pt-0 text-white/70 border-t border-gray-700">
+                                <p>1. 尝试降低游戏画质设置</p>
+                                <p>2. 关闭不必要的后台程序</p>
+                                <p>3. 检查网络连接是否稳定</p>
+                                <p>4. 如果问题持续，请联系管理员</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-dark/70 rounded-lg border border-gray-700 overflow-hidden">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none">
+                                <span class="text-white font-medium">如何举报违规玩家？</span>
+                                <i class="fa fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden p-4 pt-0 text-white/70 border-t border-gray-700">
+                                <p>1. 记录违规玩家的ID和违规行为</p>
+                                <p>2. 截图作为证据</p>
+                                <p>3. 在官方QQ群联系管理员进行举报</p>
+                                <p>4. 管理员会在24小时内处理你的举报</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        // 为每个板块按钮添加点击事件
+        sectionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const section = button.getAttribute('data-section');
+                contentArea.innerHTML = sectionContents[section];
+                
+                // 为FAQ添加折叠功能
+                if (section === 'faq') {
+                    const faqQuestions = document.querySelectorAll('.faq-question');
+                    faqQuestions.forEach(question => {
+                        question.addEventListener('click', () => {
+                            const answer = question.nextElementSibling;
+                            const icon = question.querySelector('i');
+                            
+                            answer.classList.toggle('hidden');
+                            if (answer.classList.contains('hidden')) {
+                                icon.classList.remove('fa-minus', 'rotate-45');
+                                icon.classList.add('fa-plus');
+                            } else {
+                                icon.classList.remove('fa-plus');
+                                icon.classList.add('fa-minus', 'rotate-45');
+                            }
+                        });
+                    });
+                }
+                
+                // 滚动到内容区域
+                contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的世界服务器 - 官方网站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#22c55e',
+                        secondary: '#165DFF',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.05);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark text-light font-inter antialiased overflow-x-hidden">
+    <!-- 导航栏 -->
+    <header class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="bg-dark/80 bg-blur py-4 px-6 md:px-12">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                        <i class="fa fa-cubes text-xl text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">我的世界服务器</span>
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-primary transition-colors duration-300">首页</a>
+                    <a href="#servers" class="text-white hover:text-primary transition-colors duration-300">服务器</a>
+                    <a href="#features" class="text-white hover:text-primary transition-colors duration-300">特色</a>
+                    <a href="#about" class="text-white hover:text-primary transition-colors duration-300">关于我们</a>
+                    <a href="#contact" class="text-white hover:text-primary transition-colors duration-300">联系我们</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="https://space.bilibili.com/3546902607956185" target="_blank" class="hidden md:block text-white hover:text-primary transition-colors duration-300">
+                        <i class="fa fa-play-circle text-xl"></i>
+                    </a>
+                    <a href="登录.html" class="hidden md:block px-5 py-2 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300">
+                        登录
+                    </a>
+                    <button class="md:hidden text-white text-2xl" id="menu-toggle">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-dark/95 bg-blur" id="mobile-menu">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#home" class="block text-white hover:text-primary transition-colors duration-300">首页</a>
+                <a href="#servers" class="block text-white hover:text-primary transition-colors duration-300">服务器</a>
+                <a href="#features" class="block text-white hover:text-primary transition-colors duration-300">特色</a>
+                <a href="#about" class="block text-white hover:text-primary transition-colors duration-300">关于我们</a>
+                <a href="#contact" class="block text-white hover:text-primary transition-colors duration-300">联系我们</a>
+                <a href="https://space.bilibili.com/3546902607956185" target="_blank" class="block text-white hover:text-primary transition-colors duration-300 py-2">
+                    <i class="fa fa-play-circle mr-2"></i> 哔哩哔哩
+                </a>
+                <a href="登录.html" class="block w-full text-center px-5 py-2 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300">
+                    登录
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/id/110/1920/1080" alt="我的世界风景" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-dark/60"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-white mb-6 leading-tight text-shadow animate-[fadeIn_1s_ease-in-out]">
+                探索无限可能的<br class="md:hidden">我的世界
+            </h1>
+            <p class="text-[clamp(1rem,3vw,1.25rem)] text-white/90 max-w-2xl mx-auto mb-10 text-shadow animate-[fadeIn_1.2s_ease-in-out]">
+                加入我们的服务器，与全球玩家一起建造、探索、冒险，创造属于你的传奇故事
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-[fadeIn_1.4s_ease-in-out]">
+                <a href="#servers" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-300 hover-scale">
+                    加入服务器
+                </a>
+                <a href="注册.html" class="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur text-white font-semibold rounded-lg border border-white/30 transition-all duration-300 hover-scale">
+                    立即注册
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#servers" class="text-white/70 hover:text-white text-3xl transition-colors duration-300">
+                <i class="fa fa-angle-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 服务器信息 -->
+    <section id="servers" class="py-20 px-6 bg-gradient-to-b from-dark to-dark/90">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-white mb-4">我们的服务器</h2>
+                <p class="text-white/70 max-w-2xl mx-auto">选择适合你的服务器，开始你的冒险之旅</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 生存服务器 -->
+                <div class="bg-dark/50 rounded-xl overflow-hidden border border-gray-800 hover-scale">
+                    <div class="h-60 relative">
+                        <img src="https://picsum.photos/id/111/800/500" alt="生存服务器" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-primary/90 text-white text-sm font-semibold px-3 py-1 rounded-full">
+                            在线: 24/50
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">生存服务器</h3>
+                        <p class="text-white/70 mb-4">经典的生存体验，与其他玩家一起合作或竞争，建造属于你的世界。</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-dark rounded-full text-white/60 text-sm">原版生存</span>
+                            <span class="px-3 py-1 bg-dark rounded-full text-white/60 text-sm">经济系统</span>
+                            <span class="px-3 py-1 bg-dark rounded-full text-white/60 text-sm">地皮保护</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50">版本: 1.20.1</span>
+                            <button class="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors duration-300">
+                                复制IP
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 创造服务器 -->
+                <div class="bg-dark/50 rounded-xl overflow-hidden border border-gray-800 hover-scale">
+                    <div class="h-60 relative">
+                        <img src="https://picsum.photos/id/112/800/500" alt="创造服务器" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-primary/90 text-white text-sm font-semibold px-3 py-1 rounded-full">
+                            在线: 18/30
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">创造服务器</h3>
+                        <p class="text-white/70 mb-4">无限资源，尽情发挥你的创造力，建造宏伟的建筑和复杂的机械。</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-dark rounded-full text-white/60 text-sm">无限资源</span>
+                            <span class="px-3 py-1 bg-dark rounded-full text-white/60 text-sm">创意模式</span>
+                            <span class="px-3 py-1 bg-dark rounded-full text-white/60 text-sm">团队合作</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/50">版本: 1.20.1</span>
+                            <button class="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors duration-300">
+                                复制IP
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社区与支持 -->
+    <section id="community" class="py-20 px-6 bg-dark/80">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-white mb-4">社区与支持</h2>
+                <p class="text-white/70 max-w-2xl mx-auto">加入我们的社区，获取帮助和支持</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 服务器规则 -->
+                <a href="rule.html" class="block bg-dark/50 rounded-xl overflow-hidden border border-gray-800 hover-scale h-full">
+                    <div class="h-48 flex items-center justify-center bg-primary/10">
+                        <i class="fa fa-book text-6xl text-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">服务器规则</h3>
+                        <p class="text-white/70">了解服务器的规章制度，共同维护良好的游戏环境。</p>
+                    </div>
+                </a>
+
+                <!-- 常见问题 -->
+                <a href="community.html" class="block bg-dark/50 rounded-xl overflow-hidden border border-gray-800 hover-scale h-full">
+                    <div class="h-48 flex items-center justify-center bg-primary/10">
+                        <i class="fa fa-question-circle text-6xl text-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">常见问题</h3>
+                        <p class="text-white/70">查看常见问题解答，快速解决你在游戏中遇到的问题。</p>
+                    </div>
+                </a>
+
+                <!-- 联系我们 -->
+                <a href="#contact" class="block bg-dark/50 rounded-xl overflow-hidden border border-gray-800 hover-scale h-full">
+                    <div class="h-48 flex items-center justify-center bg-primary/10">
+                        <i class="fa fa-comments text-6xl text-primary"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">联系我们</h3>
+                        <p class="text-white/70">有其他问题？联系我们的客服团队获取帮助。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                            <i class="fa fa-cubes text-xl text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">我的世界服务器</span>
+                    </div>
+                    <p class="text-white/60 mb-4">打造最好的我的世界游戏体验，与全球玩家一起探索无限可能。</p>
+                    <div class="flex space-x-4">
+                        <a href="https://space.bilibili.com/3546902607956185" target="_blank" class="text-white/60 hover:text-primary transition-colors duration-300">
+                            <i class="fa fa-play-circle text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white/60 hover:text-primary transition-colors duration-300">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white/60 hover:text-primary transition-colors duration-300">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-white/60 hover:text-primary transition-colors duration-300">首页</a></li>
+                        <li><a href="#servers" class="text-white/60 hover:text-primary transition-colors duration-300">服务器</a></li>
+                        <li><a href="rule.html" class="text-white/60 hover:text-primary transition-colors duration-300">服务器规则</a></li>
+                        <li><a href="community.html" class="text-white/60 hover:text-primary transition-colors duration-300">常见问题</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">账户</h4>
+                    <ul class="space-y-2">
+                        <li><a href="登录.html" class="text-white/60 hover:text-primary transition-colors duration-300">登录</a></li>
+                        <li><a href="注册.html" class="text-white/60 hover:text-primary transition-colors duration-300">注册</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-primary transition-colors duration-300">密码找回</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-primary transition-colors duration-300">个人中心</a></li>
+                    </ul>
+                </div>
+                
+                <div id="contact">
+                    <h4 class="text-white font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-white/60">support@minecraft-server.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-qq text-primary mt-1 mr-3"></i>
+                            <span class="text-white/60">123456789</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-clock-o text-primary mt-1 mr-3"></i>
+                            <span class="text-white/60">周一至周日 9:00-22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-white/50">&copy; 2025 我的世界服务器 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark/95');
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('bg-dark/95');
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单（如果打开）
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

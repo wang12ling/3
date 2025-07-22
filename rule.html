@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务器规则 - 我的世界服务器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#22c55e',
+                        secondary: '#165DFF',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark text-light font-inter antialiased">
+    <!-- 导航栏 -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-dark/95">
+        <div class="bg-dark/80 bg-blur py-4 px-6 md:px-12">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="游戏官网.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                        <i class="fa fa-cubes text-xl text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">我的世界服务器</span>
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="游戏官网.html#home" class="text-white hover:text-primary transition-colors duration-300">首页</a>
+                    <a href="游戏官网.html#servers" class="text-white hover:text-primary transition-colors duration-300">服务器</a>
+                    <a href="游戏官网.html#about" class="text-white hover:text-primary transition-colors duration-300">关于我们</a>
+                    <a href="游戏官网.html#contact" class="text-white hover:text-primary transition-colors duration-300">联系我们</a>
+                </nav>
+                <button class="md:hidden text-white text-2xl" id="menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-dark/95 bg-blur" id="mobile-menu">
+            <div class="px-6 py-4 space-y-4">
+                <a href="游戏官网.html#home" class="block text-white hover:text-primary transition-colors duration-300">首页</a>
+                <a href="游戏官网.html#servers" class="block text-white hover:text-primary transition-colors duration-300">服务器</a>
+                <a href="游戏官网.html#about" class="block text-white hover:text-primary transition-colors duration-300">关于我们</a>
+                <a href="游戏官网.html#contact" class="block text-white hover:text-primary transition-colors duration-300">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 规则页面内容 -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white mb-6">服务器规则</h1>
+                <p class="text-white/70 max-w-2xl mx-auto text-lg">为了维护良好的游戏环境，请所有玩家遵守以下规则</p>
+            </div>
+
+            <div class="bg-dark/50 border border-gray-700 rounded-xl p-8 mb-10">
+                <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                    <i class="fa fa-exclamation-circle mr-3"></i> 通用规则
+                </h2>
+                <ul class="space-y-4 text-white/80">
+                    <li class="flex items-start">
+                        <span class="bg-primary/20 text-primary rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">1</span>
+                        <p>尊重所有玩家，禁止辱骂、人身攻击或歧视性行为。</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-primary/20 text-primary rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">2</span>
+                        <p>禁止使用任何形式的作弊软件、外挂或利用漏洞。</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-primary/20 text-primary rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">3</span>
+                        <p>禁止恶意破坏他人建筑或财产，除非获得明确许可。</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-primary/20 text-primary rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">4</span>
+                        <p>禁止发布任何违法、色情、暴力或政治敏感内容。</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-primary/20 text-primary rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">5</span>
+                        <p>禁止刷屏或发送垃圾信息。</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 生存服务器规则 -->
+                <div class="bg-dark/50 border border-gray-700 rounded-xl p-8">
+                    <h2 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fa fa-tree mr-3"></i> 生存服务器规则
+                    </h2>
+                    <ul class="space-y-3 text-white/80">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mr-3 mt-1"></i>
+                            <p>禁止未经允许进入他人领地</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mr-3 mt-1"></i>
+                            <p>禁止使用非法手段获取资源</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mr-3 mt-1"></i>
+                            <p>PVP需双方同意，禁止恶意偷袭</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mr-3 mt-1"></i>
+                            <p>禁止建造不雅或令人不适的建筑</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mr-3 mt-1"></i>
+                            <p>重要资源区域请合理开发，避免浪费</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 生存服务器2规则 -->
+                <div class="bg-dark/50 border border-gray-700 rounded-xl p-8">
+                    <h2 class="text-xl font-bold text-secondary mb-6 flex items-center">
+                        <i class="fa fa-building mr-3"></i> 生存服务器2规则
+                    </h2>
+                    <ul class="space-y-3 text-white/80">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <p>建筑需符合基本审美，禁止乱搭乱建</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <p>大型项目请提前规划，避免占用过多资源</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <p>禁止复制或滥用创造模式权限</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <p>重要建筑区域请遵守管理员规划</p>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <p>分享你的建筑作品需获得管理员许可</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-primary/10 border border-primary/30 rounded-xl p-6">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center">
+                    <i class="fa fa-info-circle mr-3"></i> 违规处理
+                </h3>
+                <p class="text-white/80 mb-4">
+                    管理员有权根据违规情节轻重，采取警告、禁言、临时封禁、永久封禁等处罚措施。
+                </p>
+                <p class="text-white/80">
+                    如有异议，可通过官方QQ群联系管理员进行申诉。
+                </p>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="游戏官网.html" class="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-300">
+                    <i class="fa fa-arrow-left mr-2"></i> 返回首页
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 mt-6 pt-8 text-center">
+                <p class="text-white/50">&copy; 2025/7/21 All Right Reserved by wang12ling.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
